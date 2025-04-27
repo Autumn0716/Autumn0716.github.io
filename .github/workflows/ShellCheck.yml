@@ -1,6 +1,5 @@
 name: "ShellCheck"
-on: [push,pull_request]
-
+on: [push]
 jobs:
   shellcheck:
     name: Shellcheck
@@ -8,12 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run ShellCheck
-        uses: ludeeus/action-shellcheck@master
-        with:
-          ignore_paths: >-
-            ignoreme
-            ignoremetoo
-          ignore_names: ignorable.sh
+        uses: ludeeus/action-shellcheck@2.0.0
         env:
           SHELLCHECK_OPTS: -e SC2059
           
