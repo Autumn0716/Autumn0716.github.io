@@ -1,0 +1,24 @@
+on:
+  push:
+    branches:
+      - master
+
+name: "Trigger: Push action"
+permissions: {}
+
+jobs:
+  shellcheck:
+    name: Shellcheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run ShellCheck
+        uses: ludeeus/action-shellcheck@master
+        with:
+          ignore_paths: >-
+            ignoreme
+            ignoremetoo
+          ignore_names: ignorable.sh
+        env:
+          SHELLCHECK_OPTS: -e SC2059
+          
